@@ -1,0 +1,111 @@
+
+import java.util.Scanner;
+
+public class MenuVetores {
+
+    public static void main (String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int soma = 0;
+        int maior = 0;
+
+        int[] num = new int[10];
+        for (int i = 0; i < num.length; i++) {
+            System.out.print("Digite o " + (i + 1) + "º número: ");
+            num[i] = in.nextInt();
+        }
+
+        boolean loop = true;
+        while (loop) {
+            System.out.println("Escolha uma opção do menu de acordo com a númeração: ");
+            System.out.println("[1] SOMA");
+            System.out.println("[2] MAIOR NÚMERO E MENOR NÚMERO");
+            System.out.println("[3] CONTADOR DE OCORRÊNCIA");
+            System.out.println("[4] BUSCADOR");
+            System.out.println("[5] ORDENAR VETOR POR ORDEM NÚMERICA");
+            System.out.println("[6] TROCAR OS VALORES DE POSIÇÃO NO VETOR(O VALOR DA ÚLTIMA POSIÇÃO VAI PARA A PRIMEIRA POSIÇÃO, O PENÚLTIMO VAI PARA A SEGUNDA E ASSIM EM DIANTE)");
+            System.out.println("[7] FINALIZAR PROGRAMA/SAIR");
+            int op = in.nextInt();
+
+            switch (op) {
+                case 1:
+                    for (int i = 0; i < num.length; i++) {
+                        soma += num[i];
+                    }
+                    System.out.println("A soma dos valores digitados é " + soma);
+                    break;
+                case 2:
+                    int menor = num[0];
+                    for (int i = 0; i < num.length; i++) {
+                        if (num[i] > maior) {
+                            maior = num[i];
+                        } else if (num[i] < menor) {
+                            menor = num[i];
+                        }
+                    }
+                    System.out.println("O maior número é " + maior + " e o menor número é " + menor);
+                    break;
+                case 3:
+                    System.out.println("Digite qual valor você quer buscar: ");
+                    int nDig = in.nextInt();
+                    int ocorrencia = 0;
+                    for (int i = 0; i < num.length; i++) {
+                        if (num[i] == nDig) {
+                            ocorrencia += 1;
+                            System.out.println("Número encontrado na posição " + i);
+                        }
+                    }
+                    System.out.println("O número digitado foi encontrado " + ocorrencia + " vezes no vetor.");
+                    break;
+                case 4:
+                    System.out.println("Digite qual valor você quer buscar: ");
+                    int nDigi = in.nextInt();
+                    int indice=0;
+                    for (int i = 0; i < num.length; i++) {
+                        if (num[i] == nDigi) {
+                            indice=i;
+                            System.out.println("Número encontrado na posição " + indice);
+                            break;
+                        }
+                    }
+                    if (indice==0) {
+                        System.out.println("O número " + nDigi + " não foi encontrado no vetor.");
+                    }
+                    break;
+                case 5:
+                    for(int i=0;i<num.length;i++){
+                        for(int j=i+1;j<num.length;j++){
+                            if(num[i]>num[j]){
+                                int aux = num[i];
+                                num[i]=num[j];
+                                num[j]=aux;
+                            }
+                        }
+                    }
+                    for (int i=0; i<num.length; i++){
+                        System.out.print(num[i] + " ");
+                    }
+                    break;
+                case 6:
+                    for (int i = 0; i < num.length; i++) {
+                        System.out.print(num[i]+ " ");
+                    }
+                    System.out.println(" ");
+
+                    for (int i = 0; i < num.length/2; i++) {
+                        int aux = num[i];
+                        num[i] = num[num.length-1-i];
+                        num[num.length-1-i] = aux;
+                    }
+                    for (int i = 0; i < num.length; i++) {
+                        System.out.print(num[i] + " ");
+                    }
+                    break;
+                case 7:
+                    loop = false;
+                    break;
+            }
+        }
+    }
+}
+
