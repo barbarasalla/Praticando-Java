@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+public class MenuMatriz {
+    public static void main (String[] args){
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Digite a quantidade de linhas e colunas que a matriz terá: ");
+        int n = in.nextInt();
+        int [][] matriz = new int[n][n];
+        int [] mPrin= new int[n];
+
+        for(int i=0; i<matriz.length; i++){
+            for(int j=0; j<matriz.length; j++){
+                System.out.println("Digite o valor da linha " + i + " e da coluna " + j + ": ");
+                matriz[i][j]= in.nextInt();
+            }
+        }
+
+        boolean loop = true;
+        while (loop){
+            System.out.println("\n"
+                    + "De acordo com a númeração, selecione a opção desejada: \n"
+                    + "[1] Imprimir a matriz\n"
+                    + "[2] Imprimir a diagonal principal da matriz em forma de array\n"
+                    + "[3] Imprimir linha\n"
+                    + "[4] Imprimir coluna\n"
+                    + "[5] Finalizar Programa\n");
+
+            int op = in.nextInt();
+            switch (op){
+                case 1:
+                    for(int i=0; i<matriz.length; i++){
+                        for(int j=0; j<matriz.length; j++){
+                            System.out.print(matriz[i][j] + " ");
+                        }
+                        System.out.print("\n");
+                    }
+                    break;
+                case 2:
+                    System.out.print("Os valores encontrados na diagonal principal são: ");
+                    for(int i=0; i<matriz.length; i++){
+                        for(int j=0; j<matriz.length; j++){
+                            if(i==j){
+                                mPrin[i]=matriz[i][j];
+                                System.out.print(mPrin[i] + " ");
+                            }
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.print("Escolha uma linha que deseja imprimir entre 0 e " + (n-1) + ":");
+                    int lin = in.nextInt();
+                    System.out.print("Linha " + lin + ": ");
+                    for(int j=0; j<matriz.length; j++){
+                        System.out.print(matriz[lin][j] + " ");
+                    }
+                    break;
+                case 4:
+                    System.out.print("Escolha uma coluna que deseja imprimir entre 0 e " + (n-1) + ":");
+                    int col = in.nextInt();
+                    System.out.println("Coluna " + col + ": ");
+                    for(int i=0; i<matriz.length; i++){
+                        System.out.println(matriz[i][col] + " ");
+                    }
+                    break;
+                case 5:
+                    loop = false;
+                    break;
+            }
+        }
+    }
+}
