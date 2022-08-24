@@ -13,5 +13,4 @@ public class Java_OutputFormatting {
         }
         System.out.println("================================");
     }
-
 }
