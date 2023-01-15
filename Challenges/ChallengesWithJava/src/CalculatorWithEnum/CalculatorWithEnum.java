@@ -1,3 +1,5 @@
+package CalculatorWithEnum;
+
 import java.util.Scanner;
 
 public class CalculatorWithEnum {
