@@ -17,19 +17,7 @@ public class ThreadTrafficLight implements Runnable {
     public void run() {
         while (!stop){
             try {
-                switch (this.color){
-                case RED:
-                    Thread.sleep(3000);
-                    break;
-                case YELLOW:
-                    Thread.sleep(1000);
-                    break;
-                case GREEN:
-                    Thread.sleep(3500);
-                    break;
-                default:
-                    break;
-                }
+               Thread.sleep(this.color.getWaitingTime());
                 this.changeColor();
             }
             catch (InterruptedException e) {
